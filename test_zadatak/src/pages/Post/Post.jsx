@@ -9,7 +9,7 @@ import { Cookies } from 'react-cookie';
 const componentName = 'Post';
 
 const Post = ({ message }) => {
-	// console.log(`${message} ${componentName}`);
+	console.log(`${message} ${componentName}`);
 	const [post, setPost] = useState(null);
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(false);
@@ -25,9 +25,8 @@ const Post = ({ message }) => {
 			const userInfo = await axios.get('/users');
 			setPost(data.data);
 			let users = userInfo.data;
-			let userr = users.find((x) => x.id === data.data.userId);
-			console.log(userr);
-			setUser(userr);
+			let commenter = users.find((x) => x.id === data.data.userId);
+			setUser(commenter);
 		} catch (error) {
 			setError(true);
 		} finally {
@@ -42,8 +41,6 @@ const Post = ({ message }) => {
 			getPost();
 		}
 	}, []);
-	// console.log(users);
-	// console.log(post);
 
 	if (error) {
 		return (
@@ -71,7 +68,7 @@ const Post = ({ message }) => {
 				title={post.title}
 				body={post.body}
 				message={message}
-				user={user}
+				user={user.name}
 				callBackFunc={() => {}}
 			/>
 		</div>

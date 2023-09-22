@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 const componentName = 'Login';
 
 const Login = ({ message }) => {
-	// console.log(`${message} ${componentName}`);
+	console.log(`${message} ${componentName}`);
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');

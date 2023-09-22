@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Post from './pages/Post/Post';
+import NotFound from './pages/NotFound/NotFound';
 import { Cookies, useCookies } from 'react-cookie';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 				<Route path='/' element={<Login message={message} />} />
 				<Route path='app' element={<Home message={message} />} />
 				<Route path='post/:id' element={<Post message={message} />} />
+				<Route path='*' element={<NotFound />} />
 			</Routes>
 		</div>
 	);

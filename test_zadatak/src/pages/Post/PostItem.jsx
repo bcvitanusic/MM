@@ -6,7 +6,7 @@ import Comment from './Comment';
 const componentName = 'PostItem';
 
 const PostItem = ({ id, title, body, callBackFunc, message, user }) => {
-	// console.log(`${message} ${componentName}`);
+	console.log(`${message} ${componentName}`);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [comments, setComments] = useState([]);
@@ -17,8 +17,8 @@ const PostItem = ({ id, title, body, callBackFunc, message, user }) => {
 		try {
 			const data = await axios.get(`/posts/${id}/comments`);
 
-			console.log(data.data);
 			setComments(data.data);
+			setError(false);
 		} catch (error) {
 			setError(true);
 		} finally {
@@ -28,10 +28,12 @@ const PostItem = ({ id, title, body, callBackFunc, message, user }) => {
 
 	return (
 		<div
-			className=' mx-4 my-2 flex  items-center justify-center text-center flex-col border-martian-red gap-2 '
+			className=' mx-4 my-2 flex  items-center justify-center text-center flex-col border-martian-red gap-2'
 			key={id}
 		>
-			{user && <p className='text-sm italic text-left w-full'>{user.name}</p>}
+			{user && (
+				<p className='text-sm italic text-left w-full font-bold'>{user}</p>
+			)}
 			<p className=' text-xl text-martian-dark'>{title}</p>
 			<p
 				onClick={() => callBackFunc(id)}
@@ -54,6 +56,12 @@ const PostItem = ({ id, title, body, callBackFunc, message, user }) => {
 					<p onClick={() => setShowCommentsUnderPost(true)}>Show comments</p>
 				)}
 			</div>
+
+			{error && (
+				<div className=' w-11/12 rounded-lg px-12 pb-12 flex flex-col gap-4 italic'>
+					Error loading comments.
+				</div>
+			)}
 
 			{comments.length > 0 && showCommentsUnderPost && (
 				<div className=' w-11/12 rounded-lg px-12 pb-12 flex flex-col gap-4 '>
