@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Cookies, useCookies } from 'react-cookie';
+import { Cookies } from 'react-cookie';
 import { isEmpty } from '../../helpers';
 
-const NotFound = () => {
+const componentName = 'NotFound';
+
+const NotFound = ({ message }) => {
+	console.log(`${message} ${componentName}`);
+
 	const cookies = new Cookies();
 
 	return (
@@ -21,6 +26,10 @@ const NotFound = () => {
 			)}
 		</div>
 	);
+};
+
+NotFound.propTypes = {
+	message: PropTypes.string,
 };
 
 export default NotFound;

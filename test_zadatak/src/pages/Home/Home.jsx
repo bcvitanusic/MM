@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from '../../axios-configure';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PostItem from '../Post/PostItem';
+import PostItem from '../../components/PostItem';
 import { Cookies } from 'react-cookie';
 import { isEmpty } from '../../helpers';
 

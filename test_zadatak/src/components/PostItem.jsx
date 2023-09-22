@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from '../../axios-configure';
+import axios from '../axios-configure';
 import Comment from './Comment';
 
 const componentName = 'PostItem';
@@ -72,6 +72,7 @@ const PostItem = ({ id, title, body, callBackFunc, message, user }) => {
 								body={item.body}
 								email={item.email}
 								name={item.name}
+								message={message}
 							/>
 						);
 					})}
@@ -87,6 +88,7 @@ PostItem.propTypes = {
 	body: PropTypes.string.isRequired,
 	callBackFunc: PropTypes.func,
 	message: PropTypes.string,
+	user: PropTypes.string,
 };
 
 export default PostItem;

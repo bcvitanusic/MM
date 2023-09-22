@@ -39,7 +39,7 @@ function App() {
 				<Route path='/' element={<Login message={message} />} />
 				<Route path='app' element={<Home message={message} />} />
 				<Route path='post/:id' element={<Post message={message} />} />
-				<Route path='*' element={<NotFound />} />
+				<Route path='*' element={<NotFound message={message} />} />
 			</Routes>
 		</div>
 	);
